@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>魏大大</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				background: pink;
+			}
+			.box{
+                position: relative;
+				width: 120px;
+				height:  120px;
+				background: #ff0000;
+				/* 使盒子旋转45度, 并设置边距 */
+				transform: rotate(45deg);
+				margin: 200px auto;
+				animation: love 1s infinite;  /* 动画绑定 */
+				box-shadow: 0 0 20px #ff5500;
+			}
+			/* 爱心形状绘制 */
+			.box::before,
+			.box::after{
+				content: "";
+				/* 给插入的盒子进行定位 */
+				position: absolute;
+				width: 120px;
+				height: 120px;
+				background: #ff0000;
+				border-radius: 50%;
+			}
+			.box::before{
+				left: -68px;
+			}
+			.box::after{
+				top: -68px;
+			}
+			/* 动画绘制 */
+			@keyframes love{
+				0%{
+					transform: rotate(45deg)scale(0.85);
+				}
+				50%{
+					transform: rotate(45deg)scale(1);
+				}
+				100%{
+					transform: rotate(45deg)scale(0.85);
+				}
+			}
+			p{
+				text-align: center;
+				font-size: 30px;
+				font-weight: 520;
+				color: #ffaa00;
+			}
+            .titles{
+                border:1px solid red;
+                display: flex;
+                width:100%;
+                justify-content: center;
+            }
+            .inps{
+                width:300px;
+                height:30px;
+                border-radius: 15px;
+                margin:10px 0;
+            }
+            .titlename{
+                font-size:30px;
+                /* background: #000; */
+                color:pink;
+                position: absolute;
+                left: 50%;
+                top: 32%;
+                transform: translate(-50%, -50%);
+            }
+            .big{
+                position: relative;
+            }
+            .ts{
+                display: flex;
+                justify-content: center;
+            }
+            .reds{
+                background: blue;
+                color:#fff;
+                border-radius: 5px;
+                margin-left:10px;
+            }
+		</style>
+        	<script>
+                function handleInputBlur() {
+                    // 获取输入框和目标div元素
+                    const input = document.getElementById("input");
+                    const div = document.getElementById("target-div");
+                    // 判断输入框是否有内容，如果有则显示目标div，否则隐藏目标div
+                    if (input.value =='魏静霞') {
+                        div.style.display = "block";
+                    } else {
+                        div.style.display = "none";
+                        alert('亲爱的，输入名称错误，请重新输入')
+                       
+                    }
+                }
+                function handleClick() {
+                    // 获取输入框和目标div元素
+                    const names = document.getElementById("names");
+                    const btn = document.getElementById("btn");
+                    // 判断输入框是否有内容，如果有则显示目标div，否则隐藏目标div
+                      
+                       
+                        if( btn.textContent == "点击关闭"){
+                            btn.textContent = "点击此处翻译";
+                            names.style.display = "none";
+                        }else{
+                            btn.textContent = "点击关闭";
+                            names.style.display = "block";
+                        }
+                }
+            </script>
+	</head>
+	<body>
+        <div class="titles">
+            <input  class="inps" type="text"  placeholder="请输入你的姓名" id="input" onblur="handleInputBlur()">
+            
+        </div>
+       
+        <div id="target-div" style="display:none" >
+            <div  class="big">
+            <div class="box">
+                
+            </div>
+            <div  class="titlename">魏</div>
+           </div>
+           <div  class="ts">
+            <p>Dear Wei Jingxia, I like you, can you be my girlfriend?</p>   
+            <button  id="btn"  onclick="handleClick()" class="reds">点击此处翻译</button>
+           </div>
+            <p  id="names" style="display:none" >亲爱的魏静霞，我喜欢你，可以做我的女朋友吗？</p>   
+        </div>
+		
+	</body>
+</html>
